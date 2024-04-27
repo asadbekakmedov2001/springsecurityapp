@@ -48,6 +48,34 @@ public class AppDAOImpl implements AppDAO{
     }
 
     @Override
+    public void addUserinRole(int userId, int roleId) {
+        User user = findUserById(userId);
+        Role role = entityManager.find(Role.class,roleId);
+        user.addRole(role);
+        updateUser(user);
+    }
+
+    @Override
+    public List<Role> getRolesFilteredByUser(int id) {
+        TypedQuery<Role> query = entityManager.createQuery(
+                "SELECT r FROM Role r WHERE NOT EXISTS (SELECT 1 FROM UsersRoles ur WHERE ur.role.id = r.id and ur.user.id = :id)"
+                , Role.class);
+        query.setParameter("id", id);
+        return query.getResultList();
+    }
+
+
+    @Override
+    public List<Role> getUserRoles(int id) {
+        User user = findUserById(id);
+
+        TypedQuery<Role> query = entityManager.createQuery("FROM Role WHERE :user MEMBER OF users", Role.class);
+        query.setParameter("user", user);
+
+        return query.getResultList();
+    }
+
+    @Override
     public void save(Instructor instructor) {
         entityManager.persist(instructor);
     }

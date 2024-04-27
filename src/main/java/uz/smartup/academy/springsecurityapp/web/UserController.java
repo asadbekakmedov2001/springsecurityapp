@@ -1,14 +1,14 @@
 package uz.smartup.academy.springsecurityapp.web;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import uz.smartup.academy.springsecurityapp.dto.RoleDTO;
 import uz.smartup.academy.springsecurityapp.dto.UserDTO;
 import uz.smartup.academy.springsecurityapp.dto.UserDTOUtil;
-import uz.smartup.academy.springsecurityapp.entity.Role;
 import uz.smartup.academy.springsecurityapp.entity.User;
-import uz.smartup.academy.springsecurityapp.service.UserSer;
 import uz.smartup.academy.springsecurityapp.service.UserService;
 
 import java.util.List;
@@ -22,12 +22,10 @@ public class UserController {
     private Set<String> roles;
 
     private final UserService userService;
-    private final UserSer userSer;
     private final UserDTOUtil userDTOUtil;
 
-    public UserController(UserService userService, UserSer userSer, UserDTOUtil userDTOUtil) {
+    public UserController(UserService userService, UserDTOUtil userDTOUtil) {
         this.userService = userService;
-        this.userSer = userSer;
         this.userDTOUtil = userDTOUtil;
     }
 
@@ -38,7 +36,7 @@ public class UserController {
     }
 
     @GetMapping("register")
-    public String createStudentForm(Model model){
+    public String createUserForm(Model model){
         UserDTO userDTO = new UserDTO();
         model.addAttribute("userDTO",userDTO);
         model.addAttribute("roles", roles);
@@ -46,21 +44,19 @@ public class UserController {
     }
 
     @PostMapping("register/save")
-    public String saveStudent(@ModelAttribute UserDTO userDTO,  Set<Role> roles){
-        User user = userDTOUtil.toEntity(userDTO);
-        userSer.registerUser(user, roles);
+    public String saveUser(@Valid @ModelAttribute  UserDTO userDTO){
+        userService.saveUser(userDTO);
         return "redirect:/web/users/";
     }
 
     @GetMapping("edit/{id}")
     public String editUser(@PathVariable int id, Model model) {
         model.addAttribute("userDTO", userService.getUserById(id));
-        //System.out.println(service.getCourseById(id));
         return "user/user-edit-form";
     }
 
     @PostMapping("{id}")
-    public String updateCourse(@PathVariable int id, @ModelAttribute("userDTO")
+    public String updateUser(@PathVariable int id, @ModelAttribute("userDTO")
                                    UserDTO userDTO,
                                    Model model) {
         UserDTO existUser = userService.getUserById(id);
@@ -79,7 +75,19 @@ public class UserController {
         userService.deleteUserById(id);
         return "redirect:/web/users/";
     }
+    int userId;
+    @GetMapping("{id}/roles")
+    public String recordUserRolesForm(@PathVariable int id, Model model) {
+        userId=id;
+        System.out.println(userId);
+        model.addAttribute("roleDTO", userService.getRolesFilteredByUserId(id));
+        return "user/role-form.html";
+    }
 
-
+    @RequestMapping("{id}/roles/{roleId}")
+    public String saveUserRoles(@PathVariable int id, @PathVariable int roleId,Model model) {
+        userService.addRole(id,roleId);
+        return "redirect:/web/users/";
+    }
 
 }

@@ -78,6 +78,8 @@
             <td th:text = "${user.lastName}"></td>
             <td th:text = "${user.email}"></td>
             <td>
+                <a th:href = "@{/web/users/{id}/roles(id=${user.id})}"
+                   class = "btn btn-primary">Add Role</a>
 
                 <a th:href = "@{/web/users/edit/{id}(id=${user.id})}"
                    class = "btn btn-primary">Update</a>

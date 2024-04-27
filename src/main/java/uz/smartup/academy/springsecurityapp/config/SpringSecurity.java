@@ -12,15 +12,29 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
-
+//
 @Configuration
 public class SpringSecurity {
     @Bean
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager detailsManager = new JdbcUserDetailsManager(dataSource);
 
+        //detailsManager.setUsersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?");
+        //detailsManager.setAuthoritiesByUsernameQuery("SELECT username, role FROM role WHERE username = ?");
+
         detailsManager.setUsersByUsernameQuery("SELECT username, password, enabled FROM users WHERE username = ?");
-        detailsManager.setAuthoritiesByUsernameQuery("SELECT username, role FROM role WHERE username = ?");
+        detailsManager.setAuthoritiesByUsernameQuery("""
+                SELECT
+                    u.username,
+                            (SELECT r.name FROM roles r WHERE r.id = ur.role_id) AS roles
+                    FROM
+                    users u,
+                    users_roles ur
+                    WHERE
+                    u.id = ur.user_id
+                    AND u.username = ?
+                """);
+
 
         return detailsManager;
     }

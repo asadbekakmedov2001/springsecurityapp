@@ -2,6 +2,7 @@ package uz.smartup.academy.springsecurityapp.dto;
 
 import uz.smartup.academy.springsecurityapp.entity.Role;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class UserDTO {
@@ -13,15 +14,6 @@ public class UserDTO {
     private String lastName;
     private String email;
     private String enabled;
-    private Set<Role> roles;
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
 
     public int getId() {
         return id;

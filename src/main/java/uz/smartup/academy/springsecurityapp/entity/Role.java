@@ -2,31 +2,33 @@ package uz.smartup.academy.springsecurityapp.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
-    @EmbeddedId
-    private RoleKey id;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "name")
+    private String name;
+    @ManyToMany(mappedBy = "roles")
+    private List<User> users;
 
-    public String getUsername() {
-        return id.getUsername();
+    public int getId() {
+        return id;
     }
 
-    public void setUsername(String username) {
-        if (this.id == null) {
-            this.id = new RoleKey();
-        }
-        this.id.setUsername(username);
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getRole() {
-        return id.getRole();
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        if (this.id == null) {
-            this.id = new RoleKey();
-        }
-        this.id.setRole(role);
+    public void setName(String name) {
+        this.name = name;
     }
 }

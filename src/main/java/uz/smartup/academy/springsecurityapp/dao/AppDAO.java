@@ -18,6 +18,13 @@ public interface AppDAO {
 
     void deleteUserById(int id);
 
+    void addUserinRole(int userId, int roleId);
+
+    List<Role> getRolesFilteredByUser(int id);
+
+    List<Role> getUserRoles(int id);
+
+
     void save(Instructor instructor);
 
     List<Instructor> getAllInstructors();
