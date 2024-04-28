@@ -31,16 +31,16 @@
                 <a class="nav-link" th:href="@{/web/users/}">User Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/instructors}">Instructor Management</a>
+                <a class="nav-link" th:href="@{/web/instructors/}">Instructor Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/students}">Student Management</a>
+                <a class="nav-link" th:href="@{/web/students/}">Student Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/courses}">Course Management</a>
+                <a class="nav-link" th:href="@{/web/courses/}">Course Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/reviews}">Review Management</a>
+                <a class="nav-link" th:href="@{/web/reviews/}">Review Management</a>
             </li>
             <form th:action="@{/logout}" method="POST">
                 <input type="submit" value="Logout" />
@@ -82,7 +82,7 @@
                         <h5 class="mb-0">Instructor<br> Management</h5>
                         <small>Instructors</small>
                         <div class = "col-lg-3">
-                            <a th:href = "@{/web/instructors}" class = "btn btn-primary btn-sm mb-3"> Go </a>
+                            <a th:href = "@{/web/instructors/}" class = "btn btn-primary btn-sm mb-3"> Go </a>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                         <h5 class="mb-0">Course<br> Management</h5>
                         <small>Courses</small>
                         <div class = "col-lg-3">
-                            <a th:href = "@{/web/courses}" class = "btn btn-primary btn-sm mb-3"> Go </a>
+                            <a th:href = "@{/web/courses/}" class = "btn btn-primary btn-sm mb-3"> Go </a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +114,7 @@
                         <h5 class="mb-0">Student<br> Management</h5>
                         <small>Students</small>
                         <div class = "col-lg-3">
-                            <a th:href = "@{/web/students}" class = "btn btn-primary btn-sm mb-3"> Go </a>
+                            <a th:href = "@{/web/students/}" class = "btn btn-primary btn-sm mb-3"> Go </a>
                         </div>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                         <h5 class="mb-0">Review<br> Management</h5>
                         <small>Designation</small>
                         <div class = "col-lg-3">
-                            <a th:href = "@{/web/reviews}" class = "btn btn-primary btn-sm mb-3" > Go </a>
+                            <a th:href = "@{/web/reviews/}" class = "btn btn-primary btn-sm mb-3" > Go </a>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,7 @@ public class Instructor {
     private int id;
 
     @OneToOne(cascade = CascadeType.ALL )
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @OneToOne(cascade = CascadeType.ALL )

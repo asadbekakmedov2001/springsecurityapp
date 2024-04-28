@@ -27,7 +27,8 @@ public interface AppDAO {
 
     void save(Instructor instructor);
 
-    List<Instructor> getAllInstructors();
+
+    List<User> getAllInstructor();
 
     Instructor findInstructorById(int id);
 

@@ -81,10 +81,14 @@ public class AppDAOImpl implements AppDAO{
     }
 
     @Override
-    public List<Instructor> getAllInstructors() {
-        TypedQuery<Instructor>query = entityManager.createQuery("From Instructor", Instructor.class);
+    public List<User> getAllInstructor() {
+        TypedQuery<User> query = entityManager.createQuery(
+                "SELECT ur.user FROM UsersRoles ur JOIN ur.role r WHERE r.name = :roleName", User.class);
+        query.setParameter("roleName", "ROLE_INSTRUCTOR");
         return query.getResultList();
     }
+
+
 
     @Override
     public Instructor findInstructorById(int id) {

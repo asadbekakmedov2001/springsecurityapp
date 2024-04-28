@@ -31,13 +31,13 @@
                 <a class="nav-link" th:href="@{/web/users/}">User Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/instructors}">Instructor Management</a>
+                <a class="nav-link" th:href="@{/web/instructors/}">Instructor Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/students}">Student Management</a>
+                <a class="nav-link" th:href="@{/web/students/}">Student Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/courses}">Course Management</a>
+                <a class="nav-link" th:href="@{/web/courses/}">Course Management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/web/reviews}">Review Management</a>
@@ -55,19 +55,16 @@
         <h1> List Instructors </h1>
     </div>
 
-    <div class = "row">
-        <div class = "col-lg-3">
-            <a th:href = "@{/web/instructors/new}" class = "btn btn-primary btn-sm mb-3"> Add Instructor</a>
-        </div>
-    </div>
+
+
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
             <th> FirstName</th>
             <th> LastName</th>
             <th> Email</th>
-            <th> Hobby </th>
-            <th> YouTube Channel </th>
+<!--            <th> Hobby </th>-->
+<!--            <th> YouTube Channel </th>-->
             <th> UserName </th>
             <th> Password </th>
         </tr>
@@ -78,11 +75,14 @@
             <td th:text = "${instructor.firstName}"></td>
             <td th:text = "${instructor.lastName}"></td>
             <td th:text = "${instructor.email}"></td>
-            <td th:text = "${instructor.hobby}"></td>
-            <td th:text = "${instructor.youtubeChannel}"></td>
+<!--            <td th:text = "${instructor.hobby}"></td>-->
+<!--            <td th:text = "${instructor.youtubeChannel}"></td>-->
             <td th:text = "${instructor.username}"></td>
             <td th:text = "${instructor.password}"></td>
             <td>
+                <a th:href = "@{/web/instructors/detailcreate/{userId}(userId=${instructor.id})}"
+                   class = "btn btn-primary btn-sm mb-3"> Add Instructor Detail</a>
+
                 <a th:href = "@{/instructors/{id}/courses(id=${instructor.id})}"
                    class = "btn btn-info">Instructor's course</a>
 

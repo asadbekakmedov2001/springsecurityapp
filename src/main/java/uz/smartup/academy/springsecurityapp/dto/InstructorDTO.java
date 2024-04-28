@@ -9,6 +9,15 @@ public class InstructorDTO {
     private String email;
     private String hobby;
     private String youtubeChannel;
+    private int userId;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
 
     public int getId() {
         return id;
@@ -72,5 +81,20 @@ public class InstructorDTO {
 
     public void setYoutubeChannel(String youtubeChannel) {
         this.youtubeChannel = youtubeChannel;
+    }
+
+    @Override
+    public String toString() {
+        return "InstructorDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", hobby='" + hobby + '\'' +
+                ", youtubeChannel='" + youtubeChannel + '\'' +
+                ", userId=" + userId +
+                '}';
     }
 }

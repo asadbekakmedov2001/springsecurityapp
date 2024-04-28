@@ -52,15 +52,18 @@
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Update User </h1>
+
+            <h1 class = "text-center"> Add Instructor Detail </h1>
+
             <div class = "card-body">
-                <form th:action="@{/web/users/{id} (id=${userDTO.id})}" th:object = "${userDTO}" method="POST">
+                <form th:action="@{/web/instructors/new/}" th:object = "${instructorDTO}" method="POST">
+
                     <div class ="form-group">
                         <label>  UserName </label>
                         <input
                                 type = "text"
                                 name = "name"
-                                th:field = "*{username}"
+                                th:field = "${userDTO.username}"
                                 class = "form-control"
                                 placeholder="Enter Username"
                         />
@@ -71,7 +74,7 @@
                         <input
                                 type = "text"
                                 name = "name"
-                                th:field = "*{password}"
+                                th:field = "${userDTO.password}"
                                 class = "form-control"
                                 placeholder="Enter Password"
                         />
@@ -82,7 +85,7 @@
                         <input
                                 type = "text"
                                 name = "name"
-                                th:field = "*{lastName}"
+                                th:field = "${userDTO.lastName}"
                                 class = "form-control"
                                 placeholder="Enter LastName"
                         />
@@ -93,7 +96,7 @@
                         <input
                                 type = "text"
                                 name = "name"
-                                th:field = "*{firstName}"
+                                th:field = "${userDTO.firstName}"
                                 class = "form-control"
                                 placeholder="Enter FirstName"
                         />
@@ -104,9 +107,32 @@
                         <input
                                 type = "text"
                                 name = "name"
-                                th:field = "*{email}"
+                                th:field = "${userDTO.email}"
                                 class = "form-control"
                                 placeholder="Enter Email"
+                        />
+                    </div>
+
+
+                    <div class ="form-group">
+                        <label>  Hobby </label>
+                        <input
+                                type = "text"
+                                name = "name"
+                                th:field = "*{hobby}"
+                                class = "form-control"
+                                placeholder="Enter Hobby"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label>  YouTube Channel </label>
+                        <input
+                                type = "text"
+                                name = "name"
+                                th:field = "*{youtubeChannel}"
+                                class = "form-control"
+                                placeholder="Enter YouTube Channel"
                         />
                     </div>
 

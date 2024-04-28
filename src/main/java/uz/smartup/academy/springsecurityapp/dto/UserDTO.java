@@ -71,5 +71,16 @@ public class UserDTO {
         this.enabled = enabled;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", enabled='" + enabled + '\'' +
+                '}';
+    }
 }
