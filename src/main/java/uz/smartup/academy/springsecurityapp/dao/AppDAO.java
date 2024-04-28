@@ -29,6 +29,7 @@ public interface AppDAO {
 
 
     List<User> getAllInstructor();
+    List<Instructor> getAllInstructors();
 
     Instructor findInstructorById(int id);
 

@@ -88,6 +88,11 @@ public class AppDAOImpl implements AppDAO{
         return query.getResultList();
     }
 
+    @Override
+    public List<Instructor> getAllInstructors() {
+        TypedQuery<Instructor>query= entityManager.createQuery("From Instructor", Instructor.class);
+        return query.getResultList();
+    }
 
 
     @Override
