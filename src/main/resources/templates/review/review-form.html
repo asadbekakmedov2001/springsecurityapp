@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
@@ -7,6 +6,10 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -37,7 +40,7 @@
                 <a class="nav-link" th:href="@{/web/courses/}">Course Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/reviews/}">Review Management</a>
+                <a class="nav-link" th:href="@{/web/reviews}">Review Management</a>
             </li>
             <form th:action="@{/logout}" method="POST">
                 <input type="submit" value="Logout" />
@@ -47,37 +50,33 @@
     </div>
 </nav>
 
+
 <div class ="container">
     <div class = "row">
-        <h1> List Courses </h1>
+        <h1> List Reviews </h1>
     </div>
 
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
-            <th> Title</th>
-            <th> Description</th>
-            <th> Price </th>
-            <th> InstructorId </th>
+            <th> ID </th>
+            <th> Rating </th>
+            <th> Comment </th>
+            <th> CourseId </th>
+            <th> StudentId </th>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each = "course: ${courseDTO}">
-            <td th:text = "${course.title}"></td>
-            <td th:text = "${course.description}"></td>
-            <td th:text = "${course.price}"></td>
-            <td th:text = "${course.instructorId}"></td>
+        <tr th:each = "review: ${reviewDTO}">
+            <td th:text = "${review.id}"></td>
+            <td th:text = "${review.rating}"></td>
+            <td th:text = "${review.comment}"></td>
+            <td th:text = "${review.courseId}"></td>
+            <td th:text = "${review.studentId}"></td>
             <td>
-                <a th:href = "@{{id}(id=${course.id})}"
-                   class = "btn btn-info">Course's students</a>
-
-                <a th:href = "@{edit/{id}(id=${course.id})}"
-                   class = "btn btn-primary">Update</a>
-
-                <a th:href = "@{{id}/delete(id=${course.id})}"
+                <a th:href = "@{/web/reviews/{id}/delete(id=${review.id})}"
                    class = "btn btn-danger">Delete</a>
-
             </td>
         </tr>
         </tbody>

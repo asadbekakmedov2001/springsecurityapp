@@ -50,45 +50,58 @@
     </div>
 </nav>
 
-<div class ="container">
+<br>
+<br>
+<div class = "container">
     <div class = "row">
-        <h1> List ROLE_INSTRUCTOR </h1>
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Create New Student </h1>
+            <div class = "card-body">
+                <form th:action="@{/web/students}" th:object = "${studentDTO}" method="POST">
+                    <div class ="form-group">
+                        <label>  FirstName </label>
+                        <input
+                                type = "text"
+                                name = "firstName"
+                                th:field = "*{firstName}"
+                                class = "form-control"
+                                placeholder="Enter Student FirstName"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> LastName </label>
+                        <input
+                                type = "text"
+                                name = "lastName"
+                                th:field = "*{lastName}"
+                                class = "form-control"
+                                placeholder="Enter Student LastName"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Email </label>
+                        <input
+                                type = "text"
+                                name = "email"
+                                th:field = "*{email}"
+                                class = "form-control"
+                                placeholder="Enter Student Email"
+                        />
+                    </div>
+
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
     </div>
-
-
-
-    <table class = "table table-striped table-bordered">
-        <thead class = "table-dark">
-        <tr>
-            <th> FirstName</th>
-            <th> LastName</th>
-            <th> Email</th>
-<!--            <th> Hobby </th>-->
-<!--            <th> YouTube Channel </th>-->
-            <th> UserName </th>
-            <th> Password </th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr th:each = "instructor: ${instructorDTO}">
-            <td th:text = "${instructor.firstName}"></td>
-            <td th:text = "${instructor.lastName}"></td>
-            <td th:text = "${instructor.email}"></td>
-<!--            <td th:text = "${instructor.hobby}"></td>-->
-<!--            <td th:text = "${instructor.youtubeChannel}"></td>-->
-            <td th:text = "${instructor.username}"></td>
-            <td th:text = "${instructor.password}"></td>
-            <td>
-                <a th:href = "@{/web/instructors/detailcreate/{userId}(userId=${instructor.id})}"
-                   class = "btn btn-primary btn-sm mb-3"> Add Instructor Detail</a>
-
-            </td>
-        </tr>
-        </tbody>
-
-    </table>
-
 </div>
 </body>
 </html>

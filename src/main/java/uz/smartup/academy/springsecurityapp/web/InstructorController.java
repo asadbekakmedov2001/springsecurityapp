@@ -40,13 +40,10 @@ public class InstructorController {
     int u_id;
     @GetMapping("detailcreate/{userId}")
     public String createDetail(@PathVariable int userId, Model model) {
-        System.out.println(userId);
         u_id=userId;
         UserDTO userDTO = userService.getUserById(userId);
-        System.out.println(userDTO);
         InstructorDTO instructorDTO= new InstructorDTO();
 
-        System.out.println(instructorDTO.getUserId());
         model.addAttribute("instructorDTO", instructorDTO);
         model.addAttribute("userDTO", userDTO);
         return "instructor/instructor-create.html";

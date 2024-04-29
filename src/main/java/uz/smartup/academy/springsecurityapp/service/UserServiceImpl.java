@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import uz.smartup.academy.springsecurityapp.dao.AppDAO;
 import uz.smartup.academy.springsecurityapp.dto.*;
 import uz.smartup.academy.springsecurityapp.entity.Role;
+import uz.smartup.academy.springsecurityapp.entity.Student;
 import uz.smartup.academy.springsecurityapp.entity.User;
 
 import java.util.List;
@@ -68,6 +69,12 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void addRole(int userId, int roleId) {
         dao.addUserinRole(userId, roleId);
+        if (roleId == 4) {
+            Student student = new Student();
+            User user = dao.findUserById(userId);
+            student.setUser(user);
+            dao.saveStudent(student);
+        }
     }
     @Override
     public List<RoleDTO> getRolesFilteredByUserId(int id){

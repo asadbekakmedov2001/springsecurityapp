@@ -45,6 +45,7 @@ public class UserController {
 
     @PostMapping("register/save")
     public String saveUser(@Valid @ModelAttribute  UserDTO userDTO){
+        userDTO.setPassword("{noop}"+userDTO.getPassword());
         userService.saveUser(userDTO);
         return "redirect:/web/users/";
     }
@@ -62,9 +63,10 @@ public class UserController {
         UserDTO existUser = userService.getUserById(id);
         existUser.setId(userDTO.getId());
         existUser.setUsername(userDTO.getUsername());
-        existUser.setPassword("{noop}"+userDTO.getPassword());
+        existUser.setPassword(userDTO.getPassword());
         existUser.setLastName(userDTO.getLastName());
         existUser.setFirstName(userDTO.getFirstName());
+        existUser.setEmail(userDTO.getEmail());
         existUser.setEnabled("Y");
         userService.updateUser(existUser);
         return "redirect:/web/users/";

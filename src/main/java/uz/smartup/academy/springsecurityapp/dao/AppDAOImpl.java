@@ -82,10 +82,13 @@ public class AppDAOImpl implements AppDAO{
 
     @Override
     public List<User> getAllInstructor() {
-        TypedQuery<User> query = entityManager.createQuery(
-                "SELECT ur.user FROM UsersRoles ur JOIN ur.role r WHERE r.name = :roleName", User.class);
-        query.setParameter("roleName", "ROLE_INSTRUCTOR");
-        return query.getResultList();
+        String hql = "SELECT u FROM User u " +
+                "WHERE u.id IN (SELECT ur.user.id FROM UsersRoles ur JOIN ur.role r WHERE r.name = :roleName) " +
+                "AND u.id NOT IN (SELECT i.user.id FROM Instructor i)";
+
+        return entityManager.createQuery(hql, User.class)
+                .setParameter("roleName", "ROLE_INSTRUCTOR")
+                .getResultList();
     }
 
     @Override

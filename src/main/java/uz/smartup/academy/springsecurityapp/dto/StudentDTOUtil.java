@@ -12,7 +12,7 @@ public class StudentDTOUtil {
         StudentDTO dto = new StudentDTO();
         dto.setId(student.getId());
         dto.setUsername(student.getUser().getUsername());
-        dto.setPassword(dto.getUsername());
+        dto.setPassword(student.getUser().getPassword());
         dto.setFirstName(student.getUser().getFirstName());
         dto.setLastName(student.getUser().getLastName());
         dto.setEmail(student.getUser().getEmail());
@@ -34,4 +34,5 @@ public class StudentDTOUtil {
     public List<StudentDTO> toDTOs(List<Student> students) {
         return students.stream().map(this::toDTO).toList();
     }
+
 }

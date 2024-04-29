@@ -10,12 +10,21 @@ import java.util.List;
 import java.util.Set;
 
 public interface UserService {
+
     void saveUser(UserDTO userDTO);
+
     List<UserDTO> getAllUsers();
+
     UserDTO getUserById(int id);
+
     UserDTO getUserByEmail(String email);
+
     void updateUser(UserDTO userDTO);
+
     void deleteUserById(int id);
+
     void addRole(int userId, int roleId);
+
     List<RoleDTO> getRolesFilteredByUserId(int id);
+
 }

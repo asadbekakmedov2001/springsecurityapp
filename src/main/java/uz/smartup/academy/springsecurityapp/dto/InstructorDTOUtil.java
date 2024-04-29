@@ -49,12 +49,6 @@ public class InstructorDTOUtil {
 
         User user = dao.findUserById(userId);
 
-//        if (user == null) {
-//            // User topilmaganligi haqida xabar yozing va metodni to'xtating
-//            System.out.println("Bu IDga mos foydalanuvchi topilmadi. Ma'lumotlarni tekshiring.");
-//            return null;
-//        }
-
         Instructor instructor = new Instructor();
 
         InstructorDetail instructorDetail = new InstructorDetail();
