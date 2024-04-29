@@ -40,7 +40,7 @@
                 <a class="nav-link" th:href="@{/web/courses/}">Course Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/reviews}">Review Management</a>
+                <a class="nav-link" th:href="@{/web/reviews/}">Review Management</a>
             </li>
             <form th:action="@{/logout}" method="POST">
                 <input type="submit" value="Logout" />
@@ -58,7 +58,7 @@
 
     <div class = "row">
         <div class = "col-lg-3">
-            <a th:href = "@{/student/courses/{courseId}/reviews(courseId=${courseDTO.id})}"
+            <a th:href = "@{/web/students/courses/{courseId}/reviews/new(courseId=${courseDTO.id})}"
                class = "btn btn-primary btn-sm mb-3"> Add Review</a>
         </div>
     </div>

@@ -58,26 +58,46 @@ public class InstructorController {
 
 
 
+    int ins_id;
+    @GetMapping("edit/{id}")
+    public String editInstructorForm(@PathVariable int id, Model model) {
+        InstructorDTO instructorDTO = service.getInstructor(id);
+        UserDTO userDTO = userService.getUserById(instructorDTO.getUserId());
+        ins_id=id;
 
-//    @GetMapping("/instructors/edit/{id}")
-//    public String editInstructorForm(@PathVariable int id, Model model) {
-//        model.addAttribute("instructorDTO", service.getInstructor(id));
-//        return "instructor/instructor-edit";
-//    }
+        model.addAttribute("instructorDTO", instructorDTO);
+        model.addAttribute("userDTO", userDTO);
+        return "instructor/instructor-edit";
+    }
 
-//    @PostMapping("/instructors/{id}")
-//    public String updateInstructor(@PathVariable int id,
-//                                   @ModelAttribute("instructorDTO") InstructorDTO instructorDTO,
-//                                   Model model) {
-//        InstructorDTO existingInstructorDTO = service.getInstructor(id);
-//
-//        // save updated instructor object
-//        service.updateInstructor(existingInstructorDTO);
-//        return "redirect:/web/instructors";
-//    }
+    @PostMapping("{id}")
+    public String updateInstructor(@PathVariable int id,
+                                   @ModelAttribute("instructorDTO") InstructorDTO instructorDTO,
+                                   @ModelAttribute("userDTO")UserDTO userDTO) {
+
+        InstructorDTO existingInstructorDTO = service.getInstructor(id);
+
+        existingInstructorDTO.setId(id);
+
+        existingInstructorDTO.setUserId(userDTO.getId());
+        existingInstructorDTO.setUsername(userDTO.getUsername());
+        existingInstructorDTO.setPassword(userDTO.getPassword());
+        existingInstructorDTO.setFirstName(userDTO.getFirstName());
+        existingInstructorDTO.setLastName(userDTO.getLastName());
+        existingInstructorDTO.setEmail(userDTO.getEmail());
+
+        existingInstructorDTO.setInstructorDetailId(existingInstructorDTO.getInstructorDetailId());
+        existingInstructorDTO.setHobby(instructorDTO.getHobby());
+        existingInstructorDTO.setYoutubeChannel(instructorDTO.getYoutubeChannel());
+
+        System.out.println(existingInstructorDTO);
+
+        service.updateInstructor(existingInstructorDTO);
+        return "redirect:/web/instructors/";
+    }
 
     @GetMapping("delete/{id}")
-    public String deleteStudent(@PathVariable int id) {
+    public String deleteInstructor(@PathVariable int id) {
         service.deleteInstructor(id);
         return "redirect:/web/instructors";
     }

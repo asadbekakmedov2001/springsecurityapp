@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
@@ -7,6 +6,10 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -46,55 +49,89 @@
         </ul>
     </div>
 </nav>
-
+<br>
 <br>
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-            <h1 class = "text-center"> Update Course </h1>
+            <h1 class = "text-center"> Update Instructor </h1>
             <div class = "card-body">
-                <form th:action="@{/web/courses/{id} (id=${courseDTO.id})}" th:object = "${courseDTO}" method="POST">
+                <form th:action="@{/web/instructors/{id}(id=${instructorDTO.id})}" th:object = "${instructorDTO}" method="POST">
                     <div class ="form-group">
-                        <label>  Name </label>
+                        <label>  UserName </label>
                         <input
                                 type = "text"
-                                name = "title"
-                                th:field = "*{title}"
+                                name = "name"
+                                th:field = "${userDTO.username}"
                                 class = "form-control"
-                                placeholder="Enter Course Title"
+                                placeholder="Enter Username"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Description </label>
+                        <label>  Password </label>
                         <input
                                 type = "text"
-                                name = "description"
-                                th:field = "*{description}"
+                                name = "name"
+                                th:field = "${userDTO.password}"
                                 class = "form-control"
-                                placeholder="Enter Course Description"
+                                placeholder="Enter Password"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Price </label>
+                        <label>  LastName </label>
                         <input
                                 type = "text"
-                                name = "price"
-                                th:field = "*{price}"
+                                name = "name"
+                                th:field = "${userDTO.lastName}"
                                 class = "form-control"
-                                placeholder="Enter Course Price"
+                                placeholder="Enter LastName"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> InstructorId </label>
+                        <label>  FirstName </label>
                         <input
                                 type = "text"
-                                name = "instructorId"
-                                th:field = "*{instructorId}"
+                                name = "name"
+                                th:field = "${userDTO.firstName}"
                                 class = "form-control"
-                                placeholder="Enter Course InstructorId"
+                                placeholder="Enter FirstName"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label>  Email </label>
+                        <input
+                                type = "text"
+                                name = "name"
+                                th:field = "${userDTO.email}"
+                                class = "form-control"
+                                placeholder="Enter Email"
+                        />
+                    </div>
+
+
+                    <div class ="form-group">
+                        <label>  Hobby </label>
+                        <input
+                                type = "text"
+                                name = "name"
+                                th:field = "*{hobby}"
+                                class = "form-control"
+                                placeholder="Enter Hobby"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label>  YouTube Channel </label>
+                        <input
+                                type = "text"
+                                name = "name"
+                                th:field = "*{youtubeChannel}"
+                                class = "form-control"
+                                placeholder="Enter YouTube Channel"
                         />
                     </div>
 

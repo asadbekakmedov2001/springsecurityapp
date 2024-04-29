@@ -40,7 +40,7 @@
                 <a class="nav-link" th:href="@{/web/courses/}">Course Management</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/web/reviews}">Review Management</a>
+                <a class="nav-link" th:href="@{/web/reviews/}">Review Management</a>
             </li>
             <form th:action="@{/logout}" method="POST">
                 <input type="submit" value="Logout" />
@@ -77,7 +77,7 @@
             <td th:text = "${course.price}"></td>
             <td>
 
-                <a th:href="@{courses/{courseId}/reviews/new(courseId=${course.id})}"
+                <a th:href="@{/web/students/courses/{courseId}/reviews(courseId=${course.id})}"
                    class="btn btn-find">Reviews</a>
 
 

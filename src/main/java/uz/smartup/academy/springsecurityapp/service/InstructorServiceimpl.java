@@ -9,6 +9,8 @@ import uz.smartup.academy.springsecurityapp.entity.Instructor;
 import uz.smartup.academy.springsecurityapp.entity.User;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class InstructorServiceimpl implements InstructorService{
     private final AppDAO appDAO;
@@ -58,9 +60,10 @@ public class InstructorServiceimpl implements InstructorService{
 
     @Override
     @Transactional
-    public void deleteInstructor(int id) {
-        appDAO.deleteInstructorById(id);
+    public void deleteInstructor(int instructorId) {
+        appDAO.deleteInstructor(instructorId);
     }
+
 
     @Override
     @Transactional

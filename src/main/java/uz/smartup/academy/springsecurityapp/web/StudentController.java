@@ -55,7 +55,7 @@ public class StudentController {
 
 
     int cID;
-    @GetMapping("courses/{courseId}/reviews/new")
+    @GetMapping("courses/{courseId}/reviews")
     public String getAllReviewsForCourseByStudent(@PathVariable int courseId, Model model) {
         cID = courseId;
         CourseDTO courseDTO = courseService.getCourseById(courseId);
@@ -66,7 +66,7 @@ public class StudentController {
         return "student/student-course-review-form.html";
     }
 
-    @GetMapping("courses/{courseId}/reviews")
+    @GetMapping("courses/{courseId}/reviews/new")
     public String createStudentCourseReviewForm(@PathVariable int courseId, Model model){
         CourseDTO courseDTO = courseService.getCourseById(courseId);
         ReviewDTO reviewDTO = new ReviewDTO();
@@ -80,7 +80,7 @@ public class StudentController {
         reviewDTO.setStudentId(reviewDTO.getStudentId());
         reviewDTO.setCourseId(reviewDTO.getCourseId());
         service.addReview(instid, courseId, reviewDTO);
-        return "redirect:/web/students";
+        return "redirect:/web/students/";
     }
 
 

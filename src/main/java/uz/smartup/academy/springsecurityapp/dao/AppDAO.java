@@ -29,13 +29,16 @@ public interface AppDAO {
 
 
     List<User> getAllInstructor();
+
     List<Instructor> getAllInstructors();
 
     Instructor findInstructorById(int id);
 
+    InstructorDetail findInstructorDetailById(int id);
+
     void updateInstructor(Instructor instructor);
 
-    void deleteInstructorById(int id);
+    void deleteInstructor(int id);
 
     void saveCourse(Course course);
 

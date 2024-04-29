@@ -44,7 +44,7 @@ public class CourseController {
                                Model model) {
 
         service.updateCourse(courseDTO,id);
-        return "course/courses-form.html";
+        return "redirect:/web/courses/";
     }
 
     @GetMapping("{id}/delete")

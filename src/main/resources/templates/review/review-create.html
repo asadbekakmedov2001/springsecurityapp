@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Add Review to Course</h1>
-<form action="#" th:action="@{/student/courses/{courseId}/reviews(courseId=${courseDTO.id})}" th:object="${reviewDTO}" method="post">
+<form action="#" th:action="@{/web/students/courses/{courseId}/reviews(courseId=${courseDTO.id})}" th:object="${reviewDTO}" method="post">
     <input type="hidden" th:field="*{id}">
     <label for="rating">Rating:</label>
     <input type="number" id="rating" name="rating" th:field="*{rating}" required>

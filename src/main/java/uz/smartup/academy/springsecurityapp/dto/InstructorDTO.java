@@ -8,6 +8,7 @@ public class InstructorDTO {
     private String lastName;
     private String email;
     private String hobby;
+    private int instructorDetailId;
     private String youtubeChannel;
     private int userId;
 
@@ -65,6 +66,14 @@ public class InstructorDTO {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getInstructorDetailId() {
+        return instructorDetailId;
+    }
+
+    public void setInstructorDetailId(int instructorDetailId) {
+        this.instructorDetailId = instructorDetailId;
     }
 
     public String getHobby() {

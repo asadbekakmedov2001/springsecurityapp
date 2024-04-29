@@ -32,6 +32,7 @@ public class InstructorDTOUtil {
         // InstructorDetail ma'lumotlarini olib, InstructorDTO ga o'xshashlash
         InstructorDetail instructorDetail = instructor.getInstructorDetail();
         if (instructorDetail != null) {
+            instructorDTO.setInstructorDetailId(instructorDetail.getId());
             instructorDTO.setHobby(instructorDetail.getHobby());
             instructorDTO.setYoutubeChannel(instructorDetail.getYoutubeChannel());
         }
@@ -41,28 +42,35 @@ public class InstructorDTOUtil {
 
     public Instructor toEntity(InstructorDTO dto) {
 
-
-        int userId = dto.getUserId();
+        System.out.println("InstructorDTO ni ichi");
         System.out.println(dto);
-
-        System.out.println(userId);
-
-        User user = dao.findUserById(userId);
+        User user = dao.findUserById(dto.getUserId());
+        user.setId(dto.getUserId());
+        user.setUsername(dto.getUsername());
+        user.setPassword(dto.getPassword());
+        user.setEnabled("Y");
+        user.setFirstName(dto.getFirstName());
+        user.setLastName(dto.getLastName());
+        user.setEmail(dto.getEmail());
+        user.setRoles(user.getRoles());
 
         Instructor instructor = new Instructor();
+        instructor.setId(dto.getId());
 
-        InstructorDetail instructorDetail = new InstructorDetail();
+
+        InstructorDetail instructorDetail = dao.findInstructorDetailById(dto.getInstructorDetailId());
+
         instructorDetail.setHobby(dto.getHobby());
         instructorDetail.setYoutubeChannel(dto.getYoutubeChannel());
 
         instructor.setUser(user);
         instructor.setInstructorDetail(instructorDetail);
 
+        System.out.println(instructor);
+
         return instructor;
     }
     public List<InstructorDTO> toEntities(List<Instructor> instructors) {
         return instructors.stream().map(this::toDTO).toList();
     }
-
-
 }

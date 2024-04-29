@@ -1,6 +1,7 @@
 package uz.smartup.academy.springsecurityapp.dao;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import uz.smartup.academy.springsecurityapp.entity.*;
@@ -104,15 +105,22 @@ public class AppDAOImpl implements AppDAO{
     }
 
     @Override
+    public InstructorDetail findInstructorDetailById(int id) {
+        return entityManager.find(InstructorDetail.class, id);
+    }
+
+    @Override
     public void updateInstructor(Instructor instructor) {
+
         entityManager.merge(instructor);
     }
 
     @Override
-    public void deleteInstructorById(int id) {
-        Instructor instructor = findInstructorById(id);
-        entityManager.remove(instructor);
+    public void deleteInstructor(int instructorId) {
+
     }
+
+
 
     @Override
     public void saveCourse(Course course) {
